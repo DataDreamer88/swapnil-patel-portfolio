@@ -97,46 +97,36 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Form submission handler
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value
-            };
-            
-            // Show submission feedback (replace with actual form submission)
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.innerHTML;
-            
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = 'Sending...';
-            
-            // Simulate form submission (replace with actual API call)
-            setTimeout(() => {
-                // Reset form
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.innerHTML;
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Sending...';
+
+        // Use EmailJS to send form
+        emailjs.sendForm('service_i287ixm', 'template_36fq8hi', contactForm)
+            .then(function(response) {
                 contactForm.reset();
-                
-                // Show success message
+                alert('✅ Thank you! Check if you have recieved a mail from me. If not please enter correct email and try again.');
                 submitBtn.innerHTML = 'Message Sent!';
-                
-                // Reset button after 3 seconds
                 setTimeout(() => {
                     submitBtn.disabled = false;
                     submitBtn.innerHTML = originalBtnText;
                 }, 3000);
-                
-                // Optional: Display a success message to the user
-                alert('Thank you for your message! I will get back to you soon.');
-            }, 1500);
-        });
-    }
-    
+            }, function(error) {
+                console.error('EmailJS error:', error);
+                alert('❌ Failed to send message. Please try again.');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+            });
+    });
+}
+
     // Add animation effects on scroll
     const animateElements = document.querySelectorAll('.project-card, .timeline-item, .volunteering-card, .extracurricular-card, .skills-category-container');
     
