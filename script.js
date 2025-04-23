@@ -1,15 +1,28 @@
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Preloader
+    const preloader = document.querySelector('.preloader');
+    if (preloader) {
+        setTimeout(() => {
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500);
+        }, 1000);
+    }
+    
     // Navigation menu toggle
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     const navLinksItems = document.querySelectorAll('.nav-links a');
     
     // Toggle mobile menu
-    hamburger.addEventListener('click', function() {
-        hamburger.classList.toggle('active');
-        navLinks.classList.toggle('active');
-    });
+    if (hamburger) {
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+    }
     
     // Close mobile menu when a nav link is clicked
     navLinksItems.forEach(item => {
@@ -96,36 +109,36 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Form submission handler
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
+    // EmailJS Form Submission Handler
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
 
-        const submitBtn = contactForm.querySelector('button[type="submit"]');
-        const originalBtnText = submitBtn.innerHTML;
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
 
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = 'Sending...';
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Sending...';
 
-        // Use EmailJS to send form
-        emailjs.sendForm('service_i287ixm', 'template_36fq8hi', contactForm)
-            .then(function(response) {
-                contactForm.reset();
-                alert('✅ Thank you! Check if you have recieved a mail from me. If not please enter correct email and try again.');
-                submitBtn.innerHTML = 'Message Sent!';
-                setTimeout(() => {
+            // Use EmailJS to send form
+            emailjs.sendForm('service_i287ixm', 'template_36fq8hi', contactForm)
+                .then(function(response) {
+                    contactForm.reset();
+                    alert('✅ Thank you! Check if you have received a mail from me. If not please enter correct email and try again.');
+                    submitBtn.innerHTML = 'Message Sent!';
+                    setTimeout(() => {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnText;
+                    }, 3000);
+                }, function(error) {
+                    console.error('EmailJS error:', error);
+                    alert('❌ Failed to send message. Please try again.');
                     submitBtn.disabled = false;
                     submitBtn.innerHTML = originalBtnText;
-                }, 3000);
-            }, function(error) {
-                console.error('EmailJS error:', error);
-                alert('❌ Failed to send message. Please try again.');
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalBtnText;
-            });
-    });
-}
+                });
+        });
+    }
 
     // Add animation effects on scroll
     const animateElements = document.querySelectorAll('.project-card, .timeline-item, .volunteering-card, .extracurricular-card, .skills-category-container');
@@ -159,111 +172,8 @@ if (contactForm) {
         </style>
     `);
     
-    // Project filtering functionality (optional)
-    const projectCards = document.querySelectorAll('.project-card');
-    const addFilterButtons = () => {
-        const projectsSection = document.querySelector('#projects .section-header');
-        if (!projectsSection || projectCards.length === 0) return;
-        
-        // Extract unique tags from projects
-        const allTags = new Set();
-        projectCards.forEach(card => {
-            const tagElements = card.querySelectorAll('.project-tags span');
-            tagElements.forEach(tag => {
-                allTags.add(tag.textContent);
-            });
-        });
-        
-        // Create filter buttons
-        const filterContainer = document.createElement('div');
-        filterContainer.className = 'project-filters';
-        filterContainer.innerHTML = '<button class="filter-btn active" data-filter="all">All</button>';
-        
-        allTags.forEach(tag => {
-            filterContainer.innerHTML += `<button class="filter-btn" data-filter="${tag}">${tag}</button>`;
-        });
-        
-        projectsSection.insertAdjacentElement('afterend', filterContainer);
-        
-        // Add filtering functionality
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Update active button
-                filterBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                
-                const filter = this.getAttribute('data-filter');
-                
-                projectCards.forEach(card => {
-                    if (filter === 'all') {
-                        card.style.display = 'block';
-                        return;
-                    }
-                    
-                    const tagElements = card.querySelectorAll('.project-tags span');
-                    let hasTag = false;
-                    
-                    tagElements.forEach(tag => {
-                        if (tag.textContent === filter) {
-                            hasTag = true;
-                        }
-                    });
-                    
-                    card.style.display = hasTag ? 'block' : 'none';
-                });
-            });
-        });
-        
-        // Add CSS for filter buttons
-        document.head.insertAdjacentHTML('beforeend', `
-            <style>
-                .project-filters {
-                    display: flex;
-                    justify-content: center;
-                    flex-wrap: wrap;
-                    gap: 10px;
-                    margin-bottom: 30px;
-                }
-                
-                .filter-btn {
-                    background-color: #f2f2f2;
-                    border: none;
-                    padding: 8px 16px;
-                    border-radius: 20px;
-                    font-size: 14px;
-                    cursor: pointer;
-                    transition: all 0.3s ease;
-                }
-                
-                .filter-btn.active,
-                .filter-btn:hover {
-                    background-color: var(--primary-color);
-                    color: white;
-                }
-                
-                @media (max-width: 576px) {
-                    .project-filters {
-                        gap: 5px;
-                        margin-bottom: 20px;
-                    }
-                    
-                    .filter-btn {
-                        padding: 6px 12px;
-                        font-size: 12px;
-                    }
-                }
-            </style>
-        `);
-    };
-    
-    // Only add filter buttons if there are projects
-    if (document.querySelector('#projects')) {
-        addFilterButtons();
-    }
-    
     // Enable image lightbox for project images
-    const projectImages = document.querySelectorAll('.project-img img');
+    const projectImages = document.querySelectorAll('.project-img img, .volunteering-img img');
     
     // Create lightbox elements
     const lightbox = document.createElement('div');
@@ -282,7 +192,8 @@ if (contactForm) {
     // Show lightbox on image click
     projectImages.forEach(img => {
         img.style.cursor = 'pointer';
-        img.addEventListener('click', function() {
+        img.addEventListener('click', function(e) {
+            e.stopPropagation();
             lightboxImg.src = this.src;
             lightbox.style.display = 'flex';
             document.body.style.overflow = 'hidden';

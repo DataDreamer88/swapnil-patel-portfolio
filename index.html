@@ -7,17 +7,23 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+      (function(){
+        emailjs.init("j5WwXh_lwBvVTr4Eq"); // Your public key from EmailJS
+      })();
+    </script>
 </head>
-<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-<script>
-  (function(){
-    emailjs.init("j5WwXh_lwBvVTr4Eq"); // Replace with your actual public key from EmailJS
-  })();
-</script>
 <body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header & Navigation -->
     <header>
         <div class="logo">SP</div>
-        <nav id="navbar">
+        <nav>
             <ul class="nav-links">
                 <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#experience">Experience</a></li>
@@ -30,24 +36,24 @@
             </ul>
         </nav>
         <div class="hamburger">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
         </div>
     </header>
 
-    <main>
-        <section id="home" class="hero-section">
+    <!-- Home/About Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
             <div class="hero-content">
-                <div class="hero-text">
+                <div class="text-content">
                     <p class="intro-text">Hello, my name is</p>
                     <h1 class="name">
                         <span class="highlight">Swapnil</span> Patel
                     </h1>
                     <h2 class="title">BTech Computer Science Engineering Student</h2>
-                    <p class="bio">Growth catalyst with a curious mind — <br>passionate about tech, finance, and AI/ML.
+                    <p class="bio">Growth catalyst with a curious mind — passionate about tech, finance, and AI/ML.
                         I love solving real-world problems, diving deep into <b>company case studies</b>, and <b>building smart solutions</b> that drive impact.
-
                         <br><br>On a mission to make sustainability not just a choice, but a habit.</p>
                     
                     <div class="social-links">
@@ -84,9 +90,12 @@
                     <img src="assets/images/about.jpg" alt="Swapnil Patel">
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="experience" class="experience-section">
+    <!-- Experience Section -->
+    <section id="experience" class="section-padding">
+        <div class="container">
             <div class="section-header">
                 <h2>Experience</h2>
                 <p>My professional journey</p>
@@ -94,7 +103,7 @@
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
-                    <a href="https://example.com/project1" target="_blank" class="timeline-content">
+                    <div class="timeline-content">
                         <div class="timeline-date">Aug. 2024 - March 2025</div>
                         <h3>Founder's Office</h3>
                         <p>Cittaa Health Services pvt. ltd.</p>
@@ -103,11 +112,11 @@
                             <li>Data analysis - SQL and statistical methods to optimize marketing campaigns and pricing strategies</li>
                             <li>Skills : communication, client onboarding, vendor coordination, lead generation, and developing business growth strategies</li>
                         </ul>
-                    </a>
+                    </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
-                    <a href="https://example.com/project2" target="_blank" class="timeline-content">
+                    <div class="timeline-content">
                         <div class="timeline-date">May 2024 - June 2024</div>
                         <h3>Networking Intern</h3>
                         <p>Hindalco Industries Ltd.</p>
@@ -116,11 +125,11 @@
                             <li>Developed an AI/ML-based model for DDoS attack detection using SVM and DT algorithms; performed advanced packet analysis.</li>
                             <li>Used tools like Cisco Packet Tracer, EVE-NG, PuTTY, and network monitoring tools to troubleshoot enterprise network systems</li>
                         </ul>
-                    </a>
+                    </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
-                    <a href="https://example.com/project3" target="_blank" class="timeline-content">
+                    <div class="timeline-content">
                         <div class="timeline-date">2021 - 2022</div>
                         <h3>Frontend Developer (Freelance)</h3>
                         <p>Self-employed</p>
@@ -128,12 +137,15 @@
                             <li>Built custom websites for small businesses and individuals</li>
                             <li>Digital Marketing Strategies and design online Campaigns to support fast pase customer Onboarding.</li>
                         </ul>
-                    </a>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="projects" class="projects-section">
+    <!-- Projects Section -->
+    <section id="projects" class="section-padding">
+        <div class="container">
             <div class="section-header">
                 <h2>Projects</h2>
                 <p>Some of my recent work</p>
@@ -141,7 +153,7 @@
             <div class="projects-grid">
                 <a href="https://swapnil-patel.vercel.app/" target="_blank" class="project-card">
                     <div class="project-img">
-                        <img src="assets/images/project1.png" alt="Project 1">
+                        <img src="assets/images/project1.png" alt="Portfolio Website Template">
                     </div>
                     <div class="project-info">
                         <h3>Portfolio Website Template</h3>
@@ -155,7 +167,7 @@
                 </a>
                 <a href="https://example.com/project2" target="_blank" class="project-card">
                     <div class="project-img">
-                        <img src="assets/images/project2.jpg" alt="Project 2">
+                        <img src="assets/images/project2.jpg" alt="Agri Tech">
                     </div>
                     <div class="project-info">
                         <h3>Agri Tech</h3>
@@ -167,10 +179,9 @@
                         </div>
                     </div>
                 </a>
-
                 <a href="https://github.com/arnavgupta28/Sojourner" target="_blank" class="project-card">
                     <div class="project-img">
-                        <img src="assets/images/project5.jpg" alt="Project 5">
+                        <img src="assets/images/project5.jpg" alt="Space Rover Data Metadata Tagging">
                     </div>
                     <div class="project-info">
                         <h3>Space Rover Data Metadata Tagging</h3>
@@ -182,10 +193,9 @@
                         </div>
                     </div>
                 </a>
-
                 <a href="https://github.com/DataDreamer88/Graphcut-vs-Watershed" target="_blank" class="project-card">
                     <div class="project-img">
-                        <img src="assets/images/project4.png" alt="Project 4">
+                        <img src="assets/images/project4.png" alt="Image Segmentation">
                     </div>
                     <div class="project-info">
                         <h3>Image Segmentation</h3>
@@ -197,14 +207,13 @@
                         </div>
                     </div>
                 </a>
-
                 <a href="https://github.com/DataDreamer88/GLCM-and-LBP" target="_blank" class="project-card">
                     <div class="project-img">
-                        <img src="assets/images/project3.png" alt="Project 3">
+                        <img src="assets/images/project3.png" alt="Texture Feature Extraction and Classification">
                     </div>
                     <div class="project-info">
                         <h3>Texture Feature Extraction and Classification</h3>
-                        <p>Comparing Gray-Level Co-occurrence Matrix (GLCM) and Local Binary Pattern (LBP) </p>
+                        <p>Comparing Gray-Level Co-occurrence Matrix (GLCM) and Local Binary Pattern (LBP)</p>
                         <div class="project-tags">
                             <span>Python</span>
                             <span>Machine Vision</span>
@@ -212,11 +221,9 @@
                         </div>
                     </div>
                 </a>
-                
-                
                 <a href="https://github.com/DataDreamer88/Pose-Estimation" target="_blank" class="project-card">
                     <div class="project-img">
-                        <img src="assets/images/project6.png" alt="Project 6">
+                        <img src="assets/images/project6.png" alt="Pose Estimation">
                     </div>
                     <div class="project-info">
                         <h3>Pose Estimation</h3>
@@ -225,14 +232,16 @@
                             <span>Machine Vision</span>
                             <span>Mathematics</span>
                             <span>Python</span>
-
                         </div>
                     </div>
                 </a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="skills" class="skills-section">
+    <!-- Skills Section -->
+    <section id="skills" class="section-padding">
+        <div class="container">
             <div class="section-header">
                 <h2>Skills</h2>
                 <p>What I'm good at</p>
@@ -297,9 +306,12 @@
                     </a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="volunteering" class="volunteering-section">
+    <!-- Volunteering Section -->
+    <section id="volunteering" class="section-padding">
+        <div class="container">
             <div class="section-header">
                 <h2>Volunteering</h2>
                 <p>Giving back to the community</p>
@@ -307,7 +319,7 @@
             <div class="volunteering-grid">
                 <div class="volunteering-card">
                     <div class="volunteering-img">
-                        <img src="assets/images/volunteer1.jpg" alt="Teaching coding">
+                        <img src="assets/images/volunteer1.jpg" alt="Art and Craft">
                     </div>
                     <div class="volunteering-info">
                         <h3>Art and Craft</h3>
@@ -317,7 +329,7 @@
                 </div>
                 <div class="volunteering-card">
                     <div class="volunteering-img">
-                        <img src="assets/images/volunteer8.jpg" alt="Food drive">
+                        <img src="assets/images/volunteer8.jpg" alt="Biosphere Club">
                     </div>
                     <div class="volunteering-info">
                         <h3>Served as Vice President - Biosphere Club</h3>
@@ -327,7 +339,7 @@
                 </div>
                 <div class="volunteering-card">
                     <div class="volunteering-img">
-                        <img src="assets/images/volunteer3.jpg" alt="Hackathon mentor">
+                        <img src="assets/images/volunteer3.jpg" alt="Startups and Entrepreneurship Workshop">
                     </div>
                     <div class="volunteering-info">
                         <h3>Startups and Entrepreneurship Workshop</h3>
@@ -337,7 +349,7 @@
                 </div>
                 <div class="volunteering-card">
                     <div class="volunteering-img">
-                        <img src="assets/images/volunteer4.jpg" alt="Tech workshop">
+                        <img src="assets/images/volunteer4.jpg" alt="Plantation Drive">
                     </div>
                     <div class="volunteering-info">
                         <h3>Plantation Drive</h3>
@@ -347,7 +359,7 @@
                 </div>
                 <div class="volunteering-card">
                     <div class="volunteering-img">
-                        <img src="assets/images/volunteer5.jpg" alt="Food drive">
+                        <img src="assets/images/volunteer5.jpg" alt="Outreach and Marketing Appreciation">
                     </div>
                     <div class="volunteering-info">
                         <h3>Outreach and Marketing Appreciation</h3>
@@ -357,7 +369,7 @@
                 </div>
                 <div class="volunteering-card">
                     <div class="volunteering-img">
-                        <img src="assets/images/volunteer6.jpg" alt="Tree planting">
+                        <img src="assets/images/volunteer6.jpg" alt="Hackathon Mentor">
                     </div>
                     <div class="volunteering-info">
                         <h3>Hackathon Mentor</h3>
@@ -367,7 +379,7 @@
                 </div>
                 <div class="volunteering-card">
                     <div class="volunteering-img">
-                        <img src="assets/images/volunteer7.jpg" alt="Food drive">
+                        <img src="assets/images/volunteer7.jpg" alt="Cyber Security Workshop">
                     </div>
                     <div class="volunteering-info">
                         <h3>Cyber Security Workshop</h3>
@@ -377,7 +389,7 @@
                 </div>
                 <div class="volunteering-card">
                     <div class="volunteering-img">
-                        <img src="assets/images/volunteer2.jpg" alt="Environmental cleanup">
+                        <img src="assets/images/volunteer2.jpg" alt="Beach Cleanup Drive">
                     </div>
                     <div class="volunteering-info">
                         <h3>Beach Cleanup Drive</h3>
@@ -385,11 +397,13 @@
                         <p>Conducted a community led beach cleanup effort to remove waste from local beaches - Chennai</p>
                     </div>
                 </div>
-                
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="extracurricular" class="extracurricular-section">
+    <!-- Extracurricular Section -->
+    <section id="extracurricular" class="section-padding">
+        <div class="container">
             <div class="section-header">
                 <h2>Extra-Curricular</h2>
                 <p>Beyond academics</p>
@@ -429,32 +443,36 @@
                         <li>Networking and Network Security Training</li>
                         <li>Cyber Security Seminar</li>
                         <li>Entrepreneurship and Finance Workshop</li>
-                        
                     </ul>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="resume" class="resume-section">
+    <!-- Resume Section -->
+    <section id="resume" class="section-padding">
+        <div class="container">
             <div class="section-header">
                 <h2>Resume</h2>
                 <p>My academic and professional qualifications</p>
             </div>
             <div class="resume-content">
                 <div class="resume-preview">
-                    <img src="assets/images/resume.png" alt="Resume Preview" class="resume-thumb"><br>
-                    <a href="https://drive.google.com/file/d/1poI4ckBIP44KiIJo15vqtiSTiWz9uhUw/view" target="_blank" class="btn primary-btn download-btn">
-                        <i class="fas fa-download"></i> Download CV
-                    </a>
-                    <a href="https://drive.google.com/file/d/1poI4ckBIP44KiIJo15vqtiSTiWz9uhUw/view" target="_blank" class="btn secondary-btn view-btn">
-                        <i class="fas fa-eye"></i> View Online
-                    </a>
+                    <img src="assets/images/resume.png" alt="Resume Preview" class="resume-thumb">
+                    <div class="resume-buttons">
+                        <a href="https://drive.google.com/file/d/1poI4ckBIP44KiIJo15vqtiSTiWz9uhUw/view" target="_blank" class="btn primary-btn">
+                            <i class="fas fa-download"></i> Download CV
+                        </a>
+                        <a href="https://drive.google.com/file/d/1poI4ckBIP44KiIJo15vqtiSTiWz9uhUw/view" target="_blank" class="btn secondary-btn">
+                            <i class="fas fa-eye"></i> View Online
+                        </a>
+                    </div>
                 </div>
                 <div class="resume-highlights">
                     <h3>Key Highlights</h3>
                     <ul>
                         <li><i class="fas fa-graduation-cap"></i> BTech in Computer Science Engineering</li>
-                        <li><i class="fas fa-code"></i>AI/ML and Software Development Enthusiast.</li>
+                        <li><i class="fas fa-code"></i> AI/ML and Software Development Enthusiast.</li>
                         <li><i class="fas fa-certificate"></i> Amazon Web Services</li>
                         <li><i class="fas fa-project-diagram"></i> Growth Catalyst - Open for new ideas and innovation</li>
                         <li><i class="fas fa-trophy"></i> Multiple Hackathon Winner</li>
@@ -462,9 +480,12 @@
                     </ul>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="contact" class="contact-section">
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding">
+        <div class="container">
             <div class="section-header">
                 <h2>Contact Me</h2>
                 <p>Let's connect</p>
@@ -518,38 +539,41 @@
                 </div>
                 <div class="contact-form">
                     <form id="contactForm">
-                        <div class="input-group">
+                        <div class="form-group">
                             <input type="text" name="name" id="name" placeholder="Your Name" required>
                         </div>
-                        <div class="input-group">
+                        <div class="form-group">
                             <input type="email" name="email" id="email" placeholder="Your Email" required>
                         </div>
-                        <div class="input-group">
+                        <div class="form-group">
                             <input type="text" name="subject" id="subject" placeholder="Subject" required>
                         </div>
-                        <div class="input-group">
+                        <div class="form-group">
                             <textarea name="message" id="message" placeholder="Your Message" required></textarea>
                         </div>
                         <button type="submit" class="btn primary-btn">Send Message</button>
                     </form>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
+    <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-logo">SP</div>
-            <p>© 2025 Swapnil Patel. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="#home">Home</a>
-                <a href="#experience">Experience</a>
-                <a href="#projects">Projects</a>
-                <a href="#skills">Skills</a>
-                <a href="#volunteering">Volunteering</a>
-                <a href="#extracurricular">Extra-Curricular</a>
-                <a href="#resume">Resume</a>
-                <a href="#contact">Contact</a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">SP</div>
+                <p>&copy; 2025 Swapnil Patel. All Rights Reserved.</p>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#volunteering">Volunteering</a>
+                    <a href="#extracurricular">Extra-Curricular</a>
+                    <a href="#resume">Resume</a>
+                    <a href="#contact">Contact</a>
+                </div>
             </div>
         </div>
     </footer>
